@@ -1,12 +1,16 @@
-var React = require('react-native');
-var ConversationRow = require('../components/ConversationRow');
-var {
+'use strict';
+
+let React = require('react-native');
+let ConversationRow = require('../components/ConversationRow');
+let {
   NavigatorIOS,
   ListView,
-  Text
+  Text,
+  Component
 } = React;
 
-var ConversationsView = React.createClass({
+
+class ConversationsView extends Component {
   render() {
     return (
       <NavigatorIOS
@@ -24,31 +28,34 @@ var ConversationsView = React.createClass({
       />
     );
   }
-});
+}
 
-var ConversationListView = React.createClass({
-  getInitialState() {
+class ConversationListView extends Component {
+  constructor(props) {
+    super(props);
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return {
+    this.state = {
       dataSource: ds.cloneWithRows([
         {photo: "placeholder", username: "convo1", gender: "M", age: 30, compat: 60, lastMessage: "hi there sexy"},
         {photo: "placeholder", username: "convo2man", gender: "F", age: 25, compat: 76, lastMessage: "i pick my nose"},
         {photo: "placeholder", username: "convo3girl", gender: "M", age: 21, compat: 10, lastMessage: "your dreamboat has arrived"}
       ])
     };
-  },
+  }
+
   renderRow(rowData) {
     return (
-      <ConversationRow data={rowData}></ConversationRow>
-    )
-  },
+      <ConversationRow person={rowData}></ConversationRow>
+    );
+  }
+
   render() {
     return (
       <ListView dataSource={this.state.dataSource}
       renderRow={this.renderRow}
       />
-    )
+  );
   }
-});
+}
 
 module.exports = ConversationsView;

@@ -1,13 +1,25 @@
-var React = require('react-native');
-var SelectableButton = require('./SelectableButton');
-var {
+'use strict';
+
+let React = require('react-native');
+let SelectableButton = require('./SelectableButton');
+let {
   StyleSheet,
   ScrollView,
+  Component
 } = React;
 
-var ToppingSelector = React.createClass({
-  getInitialState() {
-    return {
+let styles = {
+  toppingsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+};
+
+class ToppingSelector extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       toppings: ["Pepperoni",
         "Mushroom",
         "Spinach",
@@ -20,9 +32,10 @@ var ToppingSelector = React.createClass({
         "Chicken"
       ],
       selectedToppings: []
-    }
-  },
-  onSelectionChanged(value, selected) {
+    };
+  }
+
+  _onSelectionChanged(value, selected) {
     var newSelection = this.state.selectedToppings;
 
     // If removing, remove
@@ -35,30 +48,22 @@ var ToppingSelector = React.createClass({
     }
 
     this.setState({selectedToppings: newSelection});
-    console.log("Selected toppings " + newSelection);
-    if (this.props.onSelectionChanged) this.props.onSelectionChanged(newSelection)
-  },
+    if (this.props.onSelectionChanged) this.props.onSelectionChanged(newSelection);
+  }
+
   render() {
-    var toppings = this.state.toppings.map((topping, i) => {
+    let toppings = this.state.toppings.map((topping, i) => {
         return (<SelectableButton
           key={i}
           innerText={topping}
-          onSelectionChanged={this.onSelectionChanged} />)
+          onSelectionChanged={this._onSelectionChanged} />);
     });
     return (
         <ScrollView contentContainerStyle={styles.toppingsContainer}>
           {toppings}
         </ScrollView>
-    )
+    );
   }
-});
-
-var styles = {
-  toppingsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
-  },
 }
 
-module.exports = ToppingSelector
+module.exports = ToppingSelector;

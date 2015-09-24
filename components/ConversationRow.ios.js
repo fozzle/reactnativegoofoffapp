@@ -1,13 +1,16 @@
-var React = require('react-native');
-var {
+'use strict';
+
+let React = require('react-native');
+let {
   Text,
   Image,
   View,
   TouchableHighlight,
-  StyleSheet
+  StyleSheet,
+  Component
 } = React;
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -27,28 +30,30 @@ var styles = StyleSheet.create({
     backgroundColor: 'red'
   }
 });
-var ConversationRow = React.createClass({
-  propTypes: {
-    data: React.PropTypes.shape({
-      photo: React.PropTypes.string.isRequired,
-      username: React.PropTypes.string.isRequired,
-      age: React.PropTypes.number.isRequired,
-      gender: React.PropTypes.string.isRequired,
-      compat: React.PropTypes.number.isRequired
-    }),
-  },
+
+class ConversationRow extends Component {
   render() {
-    var profileImageSource = this.props.data.photo === "placeholder" ? require('image!placeholder') : {uri: this.props.data.photo};
+    let profileImageSource = this.props.person.photo === "placeholder" ? require('image!placeholder') : {uri: this.props.person.photo};
     return (
       <TouchableHighlight>
         <View style={styles.container}>
           <Image style={styles.profileImage} source={profileImageSource}></Image>
-          <Text style={styles.usernameText}>{this.props.data.username}</Text>
-          <Text style={styles.metaText}>{this.props.data.gender} - {this.props.data.age} - {this.props.data.compat}%</Text>
+          <Text style={styles.usernameText}>{this.props.person.username}</Text>
+          <Text style={styles.metaText}>{this.props.person.gender} - {this.props.person.age} - {this.props.person.compat}%</Text>
         </View>
       </TouchableHighlight>
-    )
+    );
   }
-});
+}
+
+ConversationRow.propTypes = {
+  person: React.PropTypes.shape({
+    photo: React.PropTypes.string.isRequired,
+    username: React.PropTypes.string.isRequired,
+    age: React.PropTypes.number.isRequired,
+    gender: React.PropTypes.string.isRequired,
+    compat: React.PropTypes.number.isRequired
+  })
+};
 
 module.exports = ConversationRow;

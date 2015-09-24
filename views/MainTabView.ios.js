@@ -1,26 +1,30 @@
 'use strict';
 
-var React = require('react-native');
-var MatchesView = require('./MatchesView');
-var ConversationsView = require('./ConversationsView')
-var {
+let React = require('react-native');
+let MatchesView = require('./MatchesView');
+let ConversationsView = require('./ConversationsView');
+let {
   StyleSheet,
   TabBarIOS,
   Text,
-  View
+  View,
+  Component
 } = React;
 
-var MainTabView = React.createClass({
-  getInitialState(){
-    return {
+class MainTabView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       selectedTab: "matches"
-    }
-  },
+    };
+  }
+
   tabPress(tab) {
     this.setState({
       selectedTab: tab
     });
-  },
+  }
+
   render() {
     return (
       <TabBarIOS
@@ -46,8 +50,8 @@ var MainTabView = React.createClass({
           <Text>Settings</Text>
         </TabBarIOS.Item>
       </TabBarIOS>
-    )
+    );
   }
-});
+}
 
 module.exports = MainTabView;

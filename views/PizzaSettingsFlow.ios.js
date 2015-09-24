@@ -1,12 +1,13 @@
 'use strict';
 
-var React = require('react-native');
-var ToppingSelectView = require('./ToppingSelectView');
-var {
+let React = require('react-native');
+let ToppingSelectView = require('./ToppingSelectView');
+let {
   NavigatorIOS,
+  Component
 } = React;
 
-var PizzaSettingsFlow = React.createClass({
+class PizzaSettingsFlow extends Component {
   render() {
     return (
       <NavigatorIOS
@@ -22,8 +23,8 @@ var PizzaSettingsFlow = React.createClass({
           }
         }}
         />
-    )
+    );
   }
-});
+}
 
 module.exports = PizzaSettingsFlow;

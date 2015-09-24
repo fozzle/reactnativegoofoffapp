@@ -1,15 +1,18 @@
-var React = require('react-native');
-var ToppingSelector = require('../components/ToppingSelector');
-var {
+'use strict';
+
+let React = require('react-native');
+let ToppingSelector = require('../components/ToppingSelector');
+let {
   AppRegistry,
   StyleSheet,
   ScrollView,
   NavigatorIOS,
   Text,
   View,
+  Component
 } = React;
 
-var styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
@@ -25,21 +28,25 @@ var styles = StyleSheet.create({
   }
 });
 
-var ToppingSelectView = React.createClass({
-  getInitialState() {
-    return {
+class ToppingSelectView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       showButton: false
-    }
-  },
+    };
+  }
+
   selectionChanged(selectedToppings) {
     this.setState({showButton: selectedToppings.length > 0});
-  },
+  }
+
   nextPressed() {
     this.props.navigator.push({
-      component: View2,
+      component: null,
       title: 'Farts express'
     });
-  },
+  }
+
   render() {
     var nextTextComponent = this.state.showButton ? <Text onPress={this.nextPressed}>Next</Text> : null;
     return (
@@ -52,8 +59,8 @@ var ToppingSelectView = React.createClass({
           {nextTextComponent}
         </View>
       </View>
-    )
+    );
   }
-});
+}
 
-module.exports = ToppingSelectView
+module.exports = ToppingSelectView;

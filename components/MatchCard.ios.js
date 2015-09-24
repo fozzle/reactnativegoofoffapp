@@ -1,17 +1,12 @@
-var SWIPE_THRESHOLD = 120;
-
 'use strict';
 
-var React = require('react-native');
-var clamp = require('clamp');
-
-var {
+let React = require('react-native');
+let {
   StyleSheet,
   Text,
   View,
-  Animated,
-  Component,
-  PanResponder} = React;
+  Component
+} = React;
 
 let styles = StyleSheet.create({
   container: {
@@ -26,14 +21,12 @@ let styles = StyleSheet.create({
     fontSize: 14,
     color: 'gray'
   }
-})
+});
 
 class MatchCard extends Component {
   constructor(props) {
     super(props);
   }
-
-  propTypes
 
   render() {
     return (
@@ -41,7 +34,7 @@ class MatchCard extends Component {
         <Text style={styles.usernameText}>{this.props.person.username}</Text>
         <Text style={styles.detailText}>{this.props.person.age} - {this.props.person.gender} - {this.props.person.compat}% Pizza Rating</Text>
       </View>
-    )
+    );
   }
 }
 
