@@ -2,18 +2,19 @@ var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
-  SwitchIOS,
+  ScrollView,
   Text,
   View,
   TouchableHighlight,
   Animated
 } = React;
+
 var WHITE = 0,
   ORANGE = 1;
 
 var AnimatedTouchableHighlight = Animated.createAnimatedComponent(TouchableHighlight);
 
-var ToppingSwitch = React.createClass({
+var SelectableButton = React.createClass({
   getInitialState() {
     return {
       bgColor: new Animated.Value(WHITE),
@@ -44,17 +45,19 @@ var ToppingSwitch = React.createClass({
         activeOpacity={0.7}
         underlayColor='rgb(255,202,74)'
         style={[styles.toppingText, {backgroundColor: bgColor}]}>
-        <Animated.Text style={{color: textColor}}>{this.props.toppingName}</Animated.Text>
+        <Animated.Text style={{color: textColor, fontWeight: 'bold'}}>{this.props.innerText}</Animated.Text>
       </AnimatedTouchableHighlight>
     )
   },
   _onPressButton() {
-    var bgTarget = !this.state.selected ? ORANGE : WHITE;
-    var textTarget = !this.state.selected ? WHITE : ORANGE;
+    var isSelected = !this.state.selected;
+    var bgTarget = isSelected ? ORANGE : WHITE;
+    var textTarget = isSelected ? WHITE : ORANGE;
 
     this.setState({
-      selected: !this.state.selected
+      selected: isSelected
     });
+    if (this.props.onSelectionChanged) this.props.onSelectionChanged(this.props.innerText, isSelected)
 
     // animate shift
     Animated.timing(this.state.bgColor, {
@@ -70,8 +73,6 @@ var ToppingSwitch = React.createClass({
 
 let styles = StyleSheet.create({
   toppingText: {
-    color: 'black',
-    fontWeight: 'bold',
     borderRadius: 15,
     borderWidth: 1,
     borderColor: 'orange',
@@ -88,4 +89,4 @@ let styles = StyleSheet.create({
   }
 });
 
-module.exports = ToppingSwitch
+module.exports = SelectableButton

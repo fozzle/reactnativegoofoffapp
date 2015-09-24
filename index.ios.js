@@ -1,47 +1,54 @@
 'use strict';
 
 var React = require('react-native');
-var ToppingSwitch = require('./ToppingSwitch');
+var ToppingSelector = require('./ToppingSelector');
 var {
   AppRegistry,
   StyleSheet,
-  SwitchIOS,
   ScrollView,
+  NavigatorIOS,
   Text,
   View,
 } = React;
 
 var PlentyOfSlices = React.createClass({
+  render() {
+    return (
+      <NavigatorIOS
+        style={{
+          flex: 1
+        }}
+        navigationBarHidden={true}
+        initialRoute={{
+          component: ToppingSelectView,
+          title: 'Pizzzzza'
+        }} />
+    )
+  }
+});
+
+var ToppingSelectView = React.createClass({
   getInitialState() {
     return {
-      switchState: false,
-      toppings: ["Pepperoni",
-        "Mushroom",
-        "Spinach",
-        "Pineapple",
-        "Ham",
-        "Sausage",
-        "Olives",
-        "Artichoke",
-        "Anchovie",
-        "Chicken"
-        ]
-
-
+      showButton: false
     }
   },
-  render: function() {
-    var toppings = this.state.toppings.map(topping => <ToppingSwitch toppingName={topping} />);
+  selectionChanged(selectedToppings) {
+    this.setState({showButton: selectedToppings.length > 0});
+  },
+  render() {
+    var nextTextComponent = this.state.showButton ? <Text>Next</Text> : null;
     return (
       <View style={styles.container}>
         <Text style={styles.header}>
           Describe your dream pizza...
         </Text>
-        <ScrollView contentContainerStyle={styles.toppingsContainer}>
-          {toppings}
-        </ScrollView>
+        <ToppingSelector onSelectionChanged={this.selectionChanged}></ToppingSelector>
+        <View style={styles.actionsContainer}>
+          {nextTextComponent}
+        </View>
       </View>
-    );
+    )
   }
 });
 
@@ -51,19 +58,14 @@ var styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     marginTop: 40,
   },
-  toppingsScroller: {
-
-  },
-  toppingsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
-  },
   header: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
   },
+  actionsContainer: {
+    backgroundColor: 'red'
+  }
 });
 
 AppRegistry.registerComponent('PlentyOfSlices', () => PlentyOfSlices);
