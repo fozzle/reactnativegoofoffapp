@@ -10,7 +10,7 @@ let {
 } = React;
 
 
-class ConversationsView extends Component {
+class MessagesView extends Component {
   render() {
     return (
       <NavigatorIOS
@@ -58,4 +58,4 @@ class ConversationListView extends Component {
   }
 }
 
-module.exports = ConversationsView;
+module.exports = MessagesView;

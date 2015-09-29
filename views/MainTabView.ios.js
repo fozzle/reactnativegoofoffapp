@@ -2,7 +2,7 @@
 
 let React = require('react-native');
 let MatchesView = require('./MatchesView');
-let ConversationsView = require('./ConversationsView');
+let MessagesView = require('./MessagesView');
 let {
   StyleSheet,
   TabBarIOS,
@@ -41,7 +41,7 @@ class MainTabView extends Component {
           icon={require('image!messageIcon')}
           selected={this.state.selectedTab === 'matches'}
           onPress={this.tabPress.bind(this, 'matches')}>
-          <ConversationsView />
+          <MessagesView />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           title='Settings'
