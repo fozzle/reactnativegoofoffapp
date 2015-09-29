@@ -48,7 +48,7 @@ class MatchCard extends Component {
   }
 
   render() {
-    let profileImageSource = this.props.person.photo === "placeholder" ? require('image!placeholder') : {uri: this.props.person.photo};
+    let profileImageSource = this.props.person.photo === 'placeholder' ? require('image!placeholder') : {uri: this.props.person.photo};
     return (
       <View style={styles.container}>
         <Image style={styles.profileImage} resizeMode={Image.resizeMode.stretch} source={profileImageSource}></Image>

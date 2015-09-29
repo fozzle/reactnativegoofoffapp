@@ -15,7 +15,7 @@ class MainTabView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: "matches"
+      selectedTab: 'swipe'
     };
   }
 
@@ -28,25 +28,25 @@ class MainTabView extends Component {
   render() {
     return (
       <TabBarIOS
-        tintColor="orange"
-        barTintColor="darkslateblue">
+        tintColor='orange'
+        barTintColor='#fffbdd'>
         <TabBarIOS.Item
-          title="Matches"
-          selected={this.state.selectedTab === "matches"}
-          onPress={this.tabPress.bind(this, "matches")}>
+          title='Swipe'
+          selected={this.state.selectedTab === 'swipe'}
+          onPress={this.tabPress.bind(this, 'swipe')}>
           <MatchesView />
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          title="Messages"
+          title='Matches'
           icon={require('image!messageIcon')}
-          selected={this.state.selectedTab === "messages"}
-          onPress={this.tabPress.bind(this, "messages")}>
+          selected={this.state.selectedTab === 'matches'}
+          onPress={this.tabPress.bind(this, 'matches')}>
           <ConversationsView />
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          title="Settings"
-          selected={this.state.selectedTab === "settings"}
-          onPress={this.tabPress.bind(this, "settings")}>
+          title='Settings'
+          selected={this.state.selectedTab === 'settings'}
+          onPress={this.tabPress.bind(this, 'settings')}>
           <Text>Settings</Text>
         </TabBarIOS.Item>
       </TabBarIOS>

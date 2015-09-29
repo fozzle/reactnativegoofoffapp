@@ -33,7 +33,7 @@ let styles = StyleSheet.create({
 
 class ConversationRow extends Component {
   render() {
-    let profileImageSource = this.props.person.photo === "placeholder" ? require('image!placeholder') : {uri: this.props.person.photo};
+    let profileImageSource = this.props.person.photo === 'placeholder' ? require('image!placeholder') : {uri: this.props.person.photo};
     return (
       <TouchableHighlight>
         <View style={styles.container}>

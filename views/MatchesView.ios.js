@@ -3,9 +3,9 @@
 let React = require('react-native');
 let MatchCard = require('../components/MatchCard');
 let People = [
-  {photo: "placeholder", username: "slicemeister", gender: "M", age: 30, compat: 60},
-  {photo: "placeholder", username: "cheesehead", gender: "F", age: 25, compat: 76},
-  {photo: "placeholder", username: "simpleman", gender: "M", age: 21, compat: 10}
+  {photo: 'placeholder', username: 'slicemeister', gender: 'M', age: 30, compat: 60},
+  {photo: 'placeholder', username: 'cheesehead', gender: 'F', age: 25, compat: 76},
+  {photo: 'placeholder', username: 'simpleman', gender: 'M', age: 21, compat: 10}
 ];
 let SWIPE_THRESHOLD = 120;
 let clamp = require('clamp');
@@ -70,7 +70,7 @@ class MatchesView extends Component {
       navigationBarHidden={true}
       initialRoute={{
         component: MatchesSwiper,
-        title: "Matches",
+        title: 'Matches',
         passProps: {
           navigationBarHidden: this.props.navigationBarHidden
         }
@@ -160,7 +160,7 @@ class MatchesSwiper extends Component {
 
       let [translateX, translateY] = [pan.x, pan.y];
 
-      let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", "0deg", "30deg"]});
+      let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ['-30deg', '0deg', '30deg']});
       let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.5, 1, 0.5]});
       let scale = enter;
 

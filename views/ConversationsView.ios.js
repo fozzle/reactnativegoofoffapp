@@ -20,7 +20,7 @@ class ConversationsView extends Component {
       navigationBarHidden={true}
       initialRoute={{
         component: ConversationListView,
-        title: "Conversations",
+        title: 'Conversations',
         passProps: {
           navigationBarHidden: this.props.navigationBarHidden
         }
@@ -36,9 +36,9 @@ class ConversationListView extends Component {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows([
-        {photo: "placeholder", username: "convo1", gender: "M", age: 30, compat: 60, lastMessage: "hi there sexy"},
-        {photo: "placeholder", username: "convo2man", gender: "F", age: 25, compat: 76, lastMessage: "i pick my nose"},
-        {photo: "placeholder", username: "convo3girl", gender: "M", age: 21, compat: 10, lastMessage: "your dreamboat has arrived"}
+        {photo: 'placeholder', username: 'convo1', gender: 'M', age: 30, compat: 60, lastMessage: 'hi there sexy'},
+        {photo: 'placeholder', username: 'convo2man', gender: 'F', age: 25, compat: 76, lastMessage: 'i pick my nose'},
+        {photo: 'placeholder', username: 'convo3girl', gender: 'M', age: 21, compat: 10, lastMessage: 'your dreamboat has arrived'}
       ])
     };
   }

@@ -20,16 +20,16 @@ class ToppingSelector extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toppings: ["Pepperoni",
-        "Mushroom",
-        "Spinach",
-        "Pineapple",
-        "Ham",
-        "Sausage",
-        "Olives",
-        "Artichoke",
-        "Anchovie",
-        "Chicken"
+      toppings: ['Pepperoni',
+        'Mushroom',
+        'Spinach',
+        'Pineapple',
+        'Ham',
+        'Sausage',
+        'Olives',
+        'Artichoke',
+        'Anchovie',
+        'Chicken'
       ],
       selectedToppings: []
     };
