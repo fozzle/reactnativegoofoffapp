@@ -21,7 +21,7 @@ let styles = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     borderBottomWidth: 1,
-    borderBottomColor: 'gray',
+    borderBottomColor: 'gray'
   },
   profileImage: {
     margin: 5,
@@ -39,6 +39,10 @@ let styles = StyleSheet.create({
   usernameText: {
     flex: 3,
     fontSize: 24,
+  },
+  navigator: {
+    flex: 1,
+    backgroundColor: 'red'
   }
 });
 
@@ -46,9 +50,6 @@ class MessagesView extends Component {
   render() {
     return (
       <Navigator
-        style={{
-          flex: 1
-        }}
         configureScene={() => {
           return Navigator.SceneConfigs.HorizontalSwipeJump;
         }}
@@ -81,6 +82,7 @@ class MessagesView extends Component {
           component: ConversationListView,
           title: 'Conversations'
         }}
+        sceneStyle={{backgroundColor: 'blue'}}
       />
     );
   }
@@ -127,10 +129,12 @@ class ConversationListView extends Component {
 
   render() {
     return (
-      <ListView dataSource={this.state.dataSource}
+      <ListView
+      style={{backgroundColor: 'orange'}}
+      dataSource={this.state.dataSource}
       renderRow={this._renderRow.bind(this)}
       />
-  );
+    );
   }
 }
 

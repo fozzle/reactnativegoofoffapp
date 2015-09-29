@@ -47,7 +47,7 @@ class MainTabView extends Component {
           title='Settings'
           selected={this.state.selectedTab === 'settings'}
           onPress={this.tabPress.bind(this, 'settings')}>
-          <Text>Settings</Text>
+          <View style={{flex: 1, backgroundColor: 'orange'}}><Text>Settings</Text></View>
         </TabBarIOS.Item>
       </TabBarIOS>
     );
