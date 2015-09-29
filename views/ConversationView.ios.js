@@ -71,10 +71,9 @@ class ConversationView extends Component {
   }
 
   _keyboardWillShow(e) {
-    console.log(e);
-    Animated.timing(this.state.keyboardOffset, {
+    Animated.spring(this.state.keyboardOffset, {
       toValue: e.endCoordinates.height - 42,
-      duration: e.duration
+      friction: 6
     }).start();
   }
 
