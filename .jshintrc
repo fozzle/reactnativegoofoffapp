@@ -3,6 +3,7 @@
   "esnext": 1,
   "globals": {
     "require": false,
-    "module": false
+    "module": false,
+    "console": false
   }
 }

@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "clamp": "~1.0.1",
+    "parse-react": ">=0.5.0",
     "react-native": "^0.11.0",
-    "parse-react": ">=0.5.0"
+    "react-native-navbar": "^0.8.2"
   }
 }
