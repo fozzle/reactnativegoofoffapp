@@ -25,13 +25,12 @@ let styles = StyleSheet.create({
     flex: 1,
     marginBottom: 42,
     justifyContent: 'center',
-    alignItems: 'stretch',
-    backgroundColor: 'blue'
+    alignItems: 'stretch'
   },
   card: {
     flex: 1,
     margin: 40,
-    backgroundColor: 'red',
+    marginBottom: 80,
   },
   yup: {
     borderColor: 'green',
@@ -137,15 +136,15 @@ class MatchesSwiper extends Component {
             Animated.decay(this.state.pan, {
               velocity: {x: velocity, y: vy},
               deceleration: 0.98
-            }).start(this._resetState.bind(this))
+            }).start(this._resetState.bind(this));
           } else {
             Animated.spring(this.state.pan, {
               toValue: {x: 0, y: 0},
               friction: 4
-            }).start()
+            }).start();
           }
         }
-      })
+      });
     }
 
     _resetState() {
