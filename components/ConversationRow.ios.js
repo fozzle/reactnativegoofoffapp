@@ -14,10 +14,17 @@ let styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
   },
   profileImage: {
-    margin: 5
+    margin: 5,
+    marginRight: 10,
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    resizeMode: 'contain'
   },
   metaText: {
     color: 'gray',
@@ -27,7 +34,6 @@ let styles = StyleSheet.create({
   usernameText: {
     flex: 3,
     fontSize: 24,
-    backgroundColor: 'red'
   }
 });
 

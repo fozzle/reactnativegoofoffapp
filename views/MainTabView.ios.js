@@ -15,7 +15,7 @@ class MainTabView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'swipe'
+      selectedTab: 'matches'
     };
   }
 
