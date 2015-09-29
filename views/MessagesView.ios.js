@@ -50,7 +50,7 @@ class MessagesView extends Component {
           flex: 1
         }}
         configureScene={() => {
-          return Navigator.SceneConfigs.FloatFromRight;
+          return Navigator.SceneConfigs.HorizontalSwipeJump;
         }}
         navigationBar={
           <NavigationBar />
