@@ -56,7 +56,7 @@ class ToppingSelector extends Component {
         return (<SelectableButton
           key={i}
           innerText={topping}
-          onSelectionChanged={this._onSelectionChanged} />);
+          onSelectionChanged={() => this._onSelectionChanged()} />);
     });
     return (
         <ScrollView contentContainerStyle={styles.toppingsContainer}>

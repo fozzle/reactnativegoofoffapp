@@ -48,13 +48,13 @@ class ToppingSelectView extends Component {
   }
 
   render() {
-    var nextTextComponent = this.state.showButton ? <Text onPress={this.nextPressed}>Next</Text> : null;
+    var nextTextComponent = this.state.showButton ? <Text onPress={() => this.nextPressed()}>Next</Text> : null;
     return (
       <View style={styles.container}>
         <Text style={styles.header}>
           Describe your dream pizza...
         </Text>
-        <ToppingSelector onSelectionChanged={this.selectionChanged}></ToppingSelector>
+        <ToppingSelector onSelectionChanged={this.selectionChanged.bind(this)}></ToppingSelector>
         <View style={styles.actionsContainer}>
           {nextTextComponent}
         </View>

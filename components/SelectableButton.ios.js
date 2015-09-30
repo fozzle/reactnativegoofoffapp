@@ -64,7 +64,7 @@ class SelectableButton extends Component {
 
     return (
       <AnimatedTouchableHighlight
-        onPress={this._onPressButton}
+        onPress={() => this._onPressButton()}
         activeOpacity={0.7}
         underlayColor='rgb(255,202,74)'
         style={[styles.toppingText, {backgroundColor: bgColor}]}>
