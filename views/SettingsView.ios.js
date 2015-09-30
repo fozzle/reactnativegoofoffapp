@@ -2,6 +2,7 @@
 let React = require('react-native');
 let Constants = require('../util/Constants');
 let ToppingSelectView = require('./ToppingSelectView');
+let ImagePicker = require('NativeModules').UIImagePickerManager;
 let {
   Component,
   View,
@@ -57,6 +58,7 @@ class SettingsView extends Component {
     this.state = {
       profile: {
         username: 'TestUsername',
+        photo: 'placeholder',
         age: 24,
         gender: 'M'
       },
@@ -66,6 +68,27 @@ class SettingsView extends Component {
 
   _pressImage() {
     // Allow to select a new image
+    ImagePicker.showImagePicker({
+      title: 'Select Profile Photo',
+      cancelButtonTitle: 'Cancel',
+      takePhotoButtonTitle: 'Take Photo',
+      chooseFromLibraryButtonTitle: 'Choose from Library...',
+      quality: 0.5,
+      allowsEditing: false
+    }, this._imageSelected.bind(this));
+  }
+
+  _imageSelected(responseType, response) {
+    if (responseType !== 'cancel') {
+      let source;
+      if (responseType === 'data') {
+        source = {uri: 'data:image/jpeg;base64,' + response, isStatic: true};
+      } else if (responseType === 'uri') {
+        source = {uri: response.replace('file://', ''), isStatic: true};
+      }
+
+      this.setState({profile: Object.assign({}, this.state.profile, {photo: source})});
+    }
   }
 
   _pressPizzaPreferences() {
@@ -83,6 +106,7 @@ class SettingsView extends Component {
   }
 
   render() {
+    let photoSource = this.state.profile.photo === 'placeholder' ? require('image!placeholder') : this.state.profile.photo;
     return (
       <View style={styles.container}>
         <Modal
@@ -93,7 +117,7 @@ class SettingsView extends Component {
         </Modal>
         <View style={styles.profileContainer}>
             <TouchableHighlight onPress={() => this._pressImage()}>
-              <Image style={styles.profileImage} source={require('image!placeholder')}></Image>
+              <Image style={styles.profileImage} source={photoSource}></Image>
             </TouchableHighlight>
             <Text style={styles.metaText}>{this.state.profile.username} - {this.state.profile.age} - {this.state.profile.gender}</Text>
         </View>
