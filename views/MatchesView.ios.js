@@ -23,7 +23,7 @@ let {
 let styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 42,
+    marginBottom: 49,
     justifyContent: 'center',
     alignItems: 'stretch'
   },

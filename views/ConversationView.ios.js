@@ -15,7 +15,7 @@ var _keyboardWillShowSubscription, _keyboardWillHideSubscription;
 
 let styles = {
   container: {
-    flex: 1,
+    flex: 1
   },
   messageList: {
     flex: 7
@@ -66,20 +66,20 @@ class ConversationView extends Component {
     ];
     this.state = {
       dataSource: ds.cloneWithRows(data),
-      keyboardOffset: new Animated.Value(0)
+      keyboardOffset: new Animated.Value(49)
     };
   }
 
   _keyboardWillShow(e) {
     Animated.spring(this.state.keyboardOffset, {
-      toValue: e.endCoordinates.height - 42,
+      toValue: e.endCoordinates.height,
       friction: 6
     }).start();
   }
 
   _keyboardWillHide(e) {
     Animated.spring(this.state.keyboardOffset, {
-      toValue: 0,
+      toValue: 49,
       friction: 6
     }).start();
   }

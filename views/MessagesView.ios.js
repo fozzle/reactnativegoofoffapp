@@ -53,9 +53,6 @@ class MessagesView extends Component {
         configureScene={() => {
           return Navigator.SceneConfigs.HorizontalSwipeJump;
         }}
-        navigationBar={
-          <NavigationBar />
-        }
         renderScene={(route, navigator) => {
           var navBar = route.navigationBar;
           var component = route.component;
