@@ -73,6 +73,11 @@ class SettingsView extends Component {
     this.setState({modalVisible: true});
   }
 
+  _toppingsPreferencesChanged() {
+    this.setState({modalVisible: false});
+    // Save toppings
+  }
+
   _pressDeleteAccount() {
     // destroy session and return to home
   }
@@ -84,7 +89,7 @@ class SettingsView extends Component {
           animated={true}
           transparent={false}
           visible={this.state.modalVisible}>
-          <ToppingSelectView />
+          <ToppingSelectView toppingSelectionFinished={this._toppingsPreferencesChanged.bind(this)} isInModal={true} />
         </Modal>
         <View style={styles.profileContainer}>
             <TouchableHighlight onPress={() => this._pressImage()}>

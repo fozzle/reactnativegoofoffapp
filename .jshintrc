@@ -1,6 +1,6 @@
 {
   "globalstrict": 1,
-  "esnext": 1,
+  "esnext": true,
   "globals": {
     "require": false,
     "module": false,
