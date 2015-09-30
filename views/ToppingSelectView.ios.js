@@ -38,7 +38,7 @@ class ToppingSelectView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showButton: false,
+      showButton: this.props.selectedToppings.length > 0,
       toppings: ['Pepperoni',
         'Mushroom',
         'Spinach',
@@ -50,7 +50,7 @@ class ToppingSelectView extends Component {
         'Anchovie',
         'Chicken'
       ],
-      selectedToppings: this.props.toppings
+      selectedToppings: this.props.selectedToppings
     };
   }
 
@@ -81,6 +81,7 @@ class ToppingSelectView extends Component {
         return (<SelectableButton
           key={i}
           innerText={topping}
+          isSelected={this.state.selectedToppings.includes(topping)}
           onSelectionChanged={this._onSelectionChanged.bind(this)} />);
     });
 
@@ -115,7 +116,7 @@ ToppingSelectView.propTypes = {
 };
 ToppingSelectView.defaultProps = {
   isInModal: false,
-  toppings: []
+  selectedToppings: []
 };
 
 module.exports = ToppingSelectView;

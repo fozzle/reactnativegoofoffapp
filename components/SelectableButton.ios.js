@@ -39,9 +39,9 @@ class SelectableButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bgColor: new Animated.Value(WHITE),
-      textColor: new Animated.Value(ORANGE),
-      selected: false
+      bgColor: new Animated.Value(this.props.isSelected ? ORANGE : WHITE),
+      textColor: new Animated.Value(this.props.isSelected ? WHITE : ORANGE),
+      selected: this.props.isSelected
     };
   }
 
@@ -95,5 +95,12 @@ class SelectableButton extends Component {
   }
 
 }
+
+SelectableButton.propTypes = {
+  isSelected: React.PropTypes.bool
+};
+SelectableButton.defaultProps = {
+  isSelected: false
+};
 
 module.exports = SelectableButton;

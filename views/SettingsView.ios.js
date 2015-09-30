@@ -89,7 +89,7 @@ class SettingsView extends Component {
           animated={true}
           transparent={false}
           visible={this.state.modalVisible}>
-          <ToppingSelectView toppingSelectionFinished={this._toppingsPreferencesChanged.bind(this)} isInModal={true} />
+          <ToppingSelectView selectedToppings={['Ham']} toppingSelectionFinished={this._toppingsPreferencesChanged.bind(this)} isInModal={true} />
         </Modal>
         <View style={styles.profileContainer}>
             <TouchableHighlight onPress={() => this._pressImage()}>
