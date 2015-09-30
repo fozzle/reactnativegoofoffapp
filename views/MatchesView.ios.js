@@ -1,6 +1,7 @@
 'use strict';
 
 let React = require('react-native');
+let Constants = require('../util/Constants');
 let MatchCard = require('../components/MatchCard');
 let People = [
   {photo: 'placeholder', username: 'slicemeister', gender: 'M', age: 30, compat: 60},
@@ -23,7 +24,7 @@ let {
 let styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 49,
+    marginBottom: Constants.IOS_TABBAR_HEIGHT,
     justifyContent: 'center',
     alignItems: 'stretch'
   },

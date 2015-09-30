@@ -41,8 +41,7 @@ let styles = StyleSheet.create({
     fontSize: 24,
   },
   navigator: {
-    flex: 1,
-    backgroundColor: 'red'
+    flex: 1
   }
 });
 
@@ -79,7 +78,6 @@ class MessagesView extends Component {
           component: ConversationListView,
           title: 'Conversations'
         }}
-        sceneStyle={{backgroundColor: 'blue'}}
       />
     );
   }
@@ -127,7 +125,6 @@ class ConversationListView extends Component {
   render() {
     return (
       <ListView
-      style={{backgroundColor: 'orange'}}
       dataSource={this.state.dataSource}
       renderRow={this._renderRow.bind(this)}
       />

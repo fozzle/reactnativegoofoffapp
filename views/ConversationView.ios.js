@@ -1,4 +1,5 @@
 'use strict';
+let Constants = require('../util/Constants');
 let React = require('react-native');
 let {
   Component,
@@ -10,6 +11,8 @@ let {
   Animated,
   TextInput
 } = React;
+
+let INITIAL_OFFSET = Constants.IOS_TABBAR_HEIGHT;
 
 var _keyboardWillShowSubscription, _keyboardWillHideSubscription;
 
@@ -66,7 +69,7 @@ class ConversationView extends Component {
     ];
     this.state = {
       dataSource: ds.cloneWithRows(data),
-      keyboardOffset: new Animated.Value(49)
+      keyboardOffset: new Animated.Value(INITIAL_OFFSET)
     };
   }
 
@@ -79,7 +82,7 @@ class ConversationView extends Component {
 
   _keyboardWillHide(e) {
     Animated.spring(this.state.keyboardOffset, {
-      toValue: 49,
+      toValue: INITIAL_OFFSET,
       friction: 6
     }).start();
   }
