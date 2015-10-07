@@ -1,6 +1,7 @@
 'use strict';
 let Constants = require('../util/Constants');
 let React = require('react-native');
+let Parse = require('parse').Parse;
 let ParseReact = require('parse-react');
 let ParseComponent = ParseReact.Component(React);
 let {
@@ -76,7 +77,7 @@ class ConversationView extends ParseComponent {
   }
 
   observe(props, state) {
-    
+
   }
 
   _keyboardWillShow(e) {

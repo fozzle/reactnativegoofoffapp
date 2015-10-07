@@ -3,10 +3,14 @@
 let React = require('react-native');
 let PizzaSettingsFlow = require('./views/PizzaSettingsFlow');
 let MainTabView = require('./views/MainTabView');
+let Parse = require('parse').Parse;
+let config = require('./config.json');
 
 let {
   AppRegistry,
 } = React;
+
+Parse.initialize(config.parseAppID, config.parseJSKey);
 
 var PlentyOfSlices = React.createClass({
   render() {
