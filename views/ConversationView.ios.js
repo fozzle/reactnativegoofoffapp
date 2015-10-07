@@ -1,6 +1,8 @@
 'use strict';
 let Constants = require('../util/Constants');
 let React = require('react-native');
+let ParseReact = require('parse-react');
+let ParseComponent = ParseReact.Component(React);
 let {
   Component,
   ListView,
@@ -57,7 +59,7 @@ let styles = {
   }
 };
 
-class ConversationView extends Component {
+class ConversationView extends ParseComponent {
   constructor(props) {
     super(props);
     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -71,6 +73,10 @@ class ConversationView extends Component {
       dataSource: ds.cloneWithRows(data),
       keyboardOffset: new Animated.Value(INITIAL_OFFSET)
     };
+  }
+
+  observe(props, state) {
+    
   }
 
   _keyboardWillShow(e) {

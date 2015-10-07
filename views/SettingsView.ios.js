@@ -6,6 +6,8 @@ let ImagePicker = require('NativeModules').UIImagePickerManager;
 let MultiSlider = require('react-native-multi-slider');
 let Popover = require('react-native-popover');
 let SelectableButton = require('../components/SelectableButton');
+let ParseReact = require('parse-react');
+let ParseComponent = ParseReact.Component(React);
 let {
   Component,
   View,
@@ -70,7 +72,7 @@ let styles = StyleSheet.create({
 
 });
 
-class SettingsView extends Component {
+class SettingsView extends ParseComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,6 +90,10 @@ class SettingsView extends Component {
       agePopoverVisible: false,
       modalVisible: false
     }; // Fill in current settings from profile here
+  }
+
+  observe(props, state) {
+
   }
 
   _pressImage() {

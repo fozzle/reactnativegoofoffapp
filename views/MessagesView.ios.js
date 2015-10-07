@@ -3,6 +3,8 @@
 let React = require('react-native');
 let ConversationView = require('./ConversationView');
 let NavigationBar = require('react-native-navbar');
+let ParseReact = require('parse-react');
+let ParseComponent = ParseReact.Component(React);
 let {
   Navigator,
   ListView,
@@ -83,7 +85,7 @@ class MessagesView extends Component {
   }
 }
 
-class ConversationListView extends Component {
+class ConversationListView extends ParseComponent {
   constructor(props) {
     super(props);
     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -94,6 +96,10 @@ class ConversationListView extends Component {
       dataSource: ds.cloneWithRows(data),
       people: data
     };
+  }
+
+  observe(props, state) {
+
   }
 
   _onPressRow(rowID) {

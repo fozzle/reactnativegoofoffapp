@@ -3,6 +3,8 @@
 let React = require('react-native');
 let Constants = require('../util/Constants');
 let MatchCard = require('../components/MatchCard');
+let ParseReact = require('parse-react');
+let ParseComponent = ParseReact.Component(React);
 let People = [
   {photo: 'placeholder', username: 'slicemeister', gender: 'M', age: 30, compat: 60},
   {photo: 'placeholder', username: 'cheesehead', gender: 'F', age: 25, compat: 76},
@@ -81,7 +83,7 @@ class MatchesView extends Component {
   }
 }
 
-class MatchesSwiper extends Component {
+class MatchesSwiper extends ParseComponent {
     constructor(props) {
       super(props);
       this.state = {
@@ -89,6 +91,10 @@ class MatchesSwiper extends Component {
         enter: new Animated.Value(0.5),
         personIndex: 0
       };
+    }
+
+    observe(props, state) {
+
     }
 
     _didSwipe() {
