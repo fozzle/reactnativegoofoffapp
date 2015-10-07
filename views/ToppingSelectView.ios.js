@@ -81,7 +81,7 @@ class ToppingSelectView extends Component {
         return (<SelectableButton
           key={i}
           innerText={topping}
-          isSelected={this.state.selectedToppings.includes(topping)}
+          isSelected={this.state.selectedToppings.indexOf(topping) !== -1}
           onSelectionChanged={this._onSelectionChanged.bind(this)} />);
     });
 
