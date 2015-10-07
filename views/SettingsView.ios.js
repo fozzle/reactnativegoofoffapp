@@ -23,13 +23,12 @@ let GENDERS = {'M': 'Male', 'F': 'Female', 'O': 'Other'};
 let styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'lightgray',
+    backgroundColor: 'white',
     paddingTop: 40
   },
   row: {
     padding: 10,
     borderTopWidth: 1,
-    backgroundColor: 'lightgray',
     borderColor: 'gray',
     flexDirection: 'row'
   },
